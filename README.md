@@ -1,4 +1,4 @@
-<h1>Catsy</h1>
+<h1>Nukie</h1>
 <p>A general purpose cat-themed bot for Discord!
 </p>
 
@@ -8,4 +8,6 @@ Current commands:
   <li>Meow</li>
   <li>Roll</li>
   <li>Server/User Information</li>
+  <li>Rock Paper Scissors</li>
+  <li></li>
 </ul>
