@@ -4,9 +4,11 @@
 
 Current commands:
 <ul>
-  <li>Echo</li>
   <li>Meow</li>
-  <li>Roll</li>
+  <li>Echo<\li>
   <li>Server/User Information</li>
+  <li>Roll</li>
   <li>Rock Paper Scissors</li>
+  <li>Weather [WIP]</li>
+  <li>CatGPT [WIP]</li>
 </ul>
