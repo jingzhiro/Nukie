@@ -9,5 +9,4 @@ Current commands:
   <li>Roll</li>
   <li>Server/User Information</li>
   <li>Rock Paper Scissors</li>
-  <li></li>
 </ul>
