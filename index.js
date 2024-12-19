@@ -37,8 +37,6 @@ for (const file of eventFiles) {
 	} else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
-
-	console.log(filePath);
 }
 
 // Log in to Discord with client's token
