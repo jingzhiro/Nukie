@@ -9,6 +9,6 @@ Current commands:
   <li>Server/User Information</li>
   <li>Roll</li>
   <li>Rock Paper Scissors</li>
-  <li>Weather [WIP]</li>
+  <li>Weather</li>
   <li>CatGPT [WIP]</li>
 </ul>
