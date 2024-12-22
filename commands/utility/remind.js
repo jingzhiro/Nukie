@@ -7,11 +7,11 @@ module.exports = {
         .setDescription('Reminds you to do something, hopefully')
         .addIntegerOption(option => option
             .setName('minutes')
-            .setDescription('Sends a reminder after x minutes')
+            .setDescription('Sends a reminder for x minutes')
             .setRequired(true))
         .addStringOption(option => option
             .setName('message')
-            .setDescription('Task to be reminded of')
+            .setDescription('Task to remind you of :3')
         ),
     async execute(interaction) {
         const minutes = interaction.options.getInteger('minutes');

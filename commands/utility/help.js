@@ -6,6 +6,6 @@ module.exports = {
         .setName('help')
         .setDescription('Replies with a list of all commands'),
     async execute(interaction) {
-        await interaction.reply({ content: `Currently, I only know how to meow, help, remind, roll, play rock paper scissors (rps), and give information about the server/user ~ ! ${getRandomCat()}`, flags: MessageFlags.Ephemeral });
+        await interaction.reply({ content: `I know how to meow, remind, roll, play rock paper scissors (rps), give fun facts about cats, and see into the future for weather updates ~! ${getRandomCat()}`, flags: MessageFlags.Ephemeral });
     }
 };
