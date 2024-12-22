@@ -5,7 +5,7 @@
 Current commands:
 <ul>
   <li>Meow</li>
-  <li>Echo</li>
+  <li>Fun Fact</li>
   <li>Server/User Information</li>
   <li>Roll</li>
   <li>Rock Paper Scissors</li>
