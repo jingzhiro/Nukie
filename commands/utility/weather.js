@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const { getRandomCat } = require('../../catPack.js');
 const { weathertoken } = require('../../config.json');
+const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -33,6 +34,8 @@ module.exports = {
         }).then(result => {
             for(let i = 0; i < days; i++) {
                 const date = result.forecast.forecastday[i].date;
+                const dateObject = new Date(date);
+                const dayName = daysOfWeek[dateObject.getDay()];
 
                 const minTemp = result.forecast.forecastday[i].day.mintemp_c;
                 const maxTemp = result.forecast.forecastday[i].day.maxtemp_c;
@@ -45,7 +48,7 @@ module.exports = {
                     .setTitle('Nukie\'s Weather')
                     .setDescription(`Don't forget an umbrella ~! ${getRandomCat()}`)
                     .addFields(
-                        { name: `${date}`, value: `${condition}` },
+                        { name: `${dayName} ${date}`, value: `${condition}` },
                         { name: 'Min', value: `${minTemp}`, inline: true },
                         { name: 'Avg', value: `${avgTemp}`, inline: true },
                         { name: 'Max', value: `${maxTemp}`, inline: true }
