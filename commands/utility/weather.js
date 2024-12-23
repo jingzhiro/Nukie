@@ -18,9 +18,12 @@ module.exports = {
                 .setDescription('However many days ahead (max: 7)')
         ),
     async execute(interaction) {
+        interaction.reply('Fetching weather data...');
+
         const city = interaction.options.getString('city');
         let days = interaction.options.getInteger('days') ?? 1;
-        
+        days = (days > 7) ? 7 : days;
+
         const weatherUrl = `http://api.weatherapi.com/v1/forecast.json?key=${weathertoken}&q=${city}&days=7&aqi=no&alerts=no`;
 
         fetch(weatherUrl).then(async result => {
@@ -33,22 +36,24 @@ module.exports = {
             return result.json();
         }).then(result => {
             for(let i = 0; i < days; i++) {
-                const date = result.forecast.forecastday[i].date;
+                const { forecastday } = result.forecast;
+                const { date, day: { mintemp_c: minTemp, maxtemp_c: maxTemp, avgtemp_c: avgTemp } } = forecastday[i];
+                const condition = result.forecast.forecastday[i].day.condition.text;
+                
+                let conditionDescription = 'Don\'t forget sunscreen ~!';
+                if (condition.includes('rain')) {
+                    conditionDescription = 'Don\'t forget an umbrella ~!'
+                }
+                
                 const dateObject = new Date(date);
                 const dayName = daysOfWeek[dateObject.getDay()];
-
-                const minTemp = result.forecast.forecastday[i].day.mintemp_c;
-                const maxTemp = result.forecast.forecastday[i].day.maxtemp_c;
-                const avgTemp = result.forecast.forecastday[i].day.avgtemp_c;
-                
-                const condition = result.forecast.forecastday[i].day.condition.text;
                 
                 const weatherEmbed = new EmbedBuilder()
                     .setColor(0x0099FF)
                     .setTitle('Nukie\'s Weather')
-                    .setDescription(`Don't forget an umbrella ~! ${getRandomCat()}`)
+                    .setDescription(`${conditionDescription} ${getRandomCat()}`)
                     .addFields(
-                        { name: `${dayName} ${date}`, value: `${condition}` },
+                        { name: `[${city}] ${dayName} ${date}`, value: `${condition}` },
                         { name: 'Min', value: `${minTemp}`, inline: true },
                         { name: 'Avg', value: `${avgTemp}`, inline: true },
                         { name: 'Max', value: `${maxTemp}`, inline: true }
